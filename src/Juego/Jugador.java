@@ -13,13 +13,13 @@ public class Jugador {
     private int velocidad;
     private boolean estaVivo;
 
-    public Jugador() {
-        this.x=10;
-        this.y=10;
+    public Jugador(Entorno entorno) {
+        this.x=entorno.ancho()/2;
+        this.y=entorno.alto()-100;
         this.alto=30;
         this.ancho=30;
         this.salud=25; //en el atributo de misil como en el juego original creo que de un tiro perdias una vida asique deberia ser 25 el daño
-        this.velocidad=2;
+        this.velocidad=4;
         this.estaVivo=true;
     }
     //metodo para dibujar
@@ -28,18 +28,22 @@ public class Jugador {
     }
 
     //metodos para mover
-    public void moverDerecha() {
-        this.x+=velocidad;
+    public void moverDerecha(Entorno entorno) {
+        if (!hayColisionDer(entorno)) {
+            this.x+=velocidad;
+        }
     }
     public void moverIzquierda() {
-        this.x-=velocidad;
+        if (!hayColisionIzq()) {
+            this.x-=velocidad;
+        }
     }
     //colision con bordes de ventana
     public boolean hayColisionIzq() {
-        return this.x<=0;
+        return this.x-this.ancho/2<=0; //le resto el ancho dividido dos porque sino se pasa de la ventana ya que X es el medio del rectangulo
     }
     public boolean hayColisionDer(Entorno entorno) {
-        return this.x+this.ancho>= entorno.ancho();
+        return this.x+this.ancho/2>= entorno.ancho(); //aca lo mismo pero a la inversa le falta medio rectangulo para llegar a colisionar
     }
 
     //metodo para recibir daño(no estoy seguro si de un tiro moria cualquier cosa se cambia
@@ -52,4 +56,7 @@ public class Jugador {
             this.estaVivo=false;
         }
     }
+
+    //metodo para disparar
+
 }
