@@ -45,6 +45,10 @@ public class Jugador {
     public boolean hayColisionDer(Entorno entorno) {
         return this.x+this.ancho/2>= entorno.ancho(); //aca lo mismo pero a la inversa le falta medio rectangulo para llegar a colisionar
     }
+    //esta que verifica la colision desde arriba cuando cae una bala es provisoria necesito la clase misil
+    public boolean hayColisionArriba(double x, double y, double ancho, double alto) {
+        return this.y-alto/2 == y+alto/2; //metodoo dudoso falta verificar
+    }
 
     //metodo para recibir daño(no estoy seguro si de un tiro moria cualquier cosa se cambia
     public boolean estaVivo() {
