@@ -11,6 +11,7 @@ public class Jugador {
     private double ancho;
     private double salud;
     private int velocidad;
+    private boolean estaVivo;
 
     public Jugador() {
         this.x=10;
@@ -19,6 +20,7 @@ public class Jugador {
         this.ancho=30;
         this.salud=25; //en el atributo de misil como en el juego original creo que de un tiro perdias una vida asique deberia ser 25 el daño
         this.velocidad=2;
+        this.estaVivo=true;
     }
     //metodo para dibujar
     public void dibujar(Entorno entorno) {
@@ -38,5 +40,16 @@ public class Jugador {
     }
     public boolean hayColisionDer(Entorno entorno) {
         return this.x+this.ancho>= entorno.ancho();
+    }
+
+    //metodo para recibir daño(no estoy seguro si de un tiro moria cualquier cosa se cambia
+    public boolean estaVivo() {
+        return estaVivo;
+    }
+    public void recibirDmg(int danio) {
+        this.salud-=danio;
+        if (this.salud<=0) {
+            this.estaVivo=false;
+        }
     }
 }
