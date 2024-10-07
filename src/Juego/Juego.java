@@ -20,7 +20,7 @@ public class Juego extends InterfaceJuego
         this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 
         // Inicializar lo que haga falta para el juego
-        this.jugador = new Jugador();
+        this.jugador = new Jugador(entorno);
 
         // Inicia el juego!
         this.entorno.iniciar();
@@ -35,6 +35,14 @@ public class Juego extends InterfaceJuego
     public void tick()
     {
         jugador.dibujar(entorno);
+
+        //teclas
+        if (entorno.estaPresionada(entorno.TECLA_DERECHA)) {
+            jugador.moverDerecha(entorno);
+        }
+        if (entorno.estaPresionada(entorno.TECLA_IZQUIERDA)) {
+            jugador.moverIzquierda();
+        }
 
     }
 
