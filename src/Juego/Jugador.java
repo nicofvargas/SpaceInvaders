@@ -61,6 +61,6 @@ public class Jugador {
         }
     }
 
-    //metodo para disparar
+    //metodo para disparar(la teoria seria que llame a la clase misil y cree una nueva instancia cada vez que dispare)
 
 }
