@@ -11,14 +11,25 @@ public class Juego extends InterfaceJuego
     // El objeto Entorno que controla el tiempo y otros
     private Entorno entorno;
     private Jugador jugador;
+    private Bloque bloque;
+
     // Variables y métodos propios de cada grupo
     // ...
 
     Juego()
     {
-        //aca se inician loa totalidad de objetos que son usados en el juego
+        // Inicializa el objeto entorno
         this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
+
+
+        // Inicializar lo que haga falta para el juego
         this.jugador = new Jugador(entorno);
+        this.bloque = new Bloque(entorno);
+
+
+
+
+        // Inicia el juego!
         this.entorno.iniciar();
     }
 
@@ -31,6 +42,8 @@ public class Juego extends InterfaceJuego
     public void tick()
     {
         jugador.dibujar(entorno);
+        bloque.dibujar(entorno);
+
 
         //teclas
         if (entorno.estaPresionada(entorno.TECLA_DERECHA)) {
@@ -41,7 +54,6 @@ public class Juego extends InterfaceJuego
         }
 
     }
-
 
     @SuppressWarnings("unused")
     public static void main(String[] args)
