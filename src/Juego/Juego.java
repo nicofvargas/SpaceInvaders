@@ -16,13 +16,9 @@ public class Juego extends InterfaceJuego
 
     Juego()
     {
-        // Inicializa el objeto entorno
+        //aca se inician loa totalidad de objetos que son usados en el juego
         this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
-
-        // Inicializar lo que haga falta para el juego
         this.jugador = new Jugador(entorno);
-
-        // Inicia el juego!
         this.entorno.iniciar();
     }
 
